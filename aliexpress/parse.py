@@ -67,7 +67,10 @@ def main(request):
     else:
         for item in links:
             data.update({item:get_object_data(item)})
-        return data
+        with open(request, mode="a", encoding="utf-8") as file:
+            for link, object_data in data.items():
+                line = f"{object_data['name']}: {link}, {object_data} \n"
+                file.write(line)
 
 
-print(main("rtx 3060"))
+main("rtx 3060")
