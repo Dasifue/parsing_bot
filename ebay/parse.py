@@ -42,13 +42,10 @@ def main(request):
         return "Data not found"
     else:
         data = get_object_data(html)
-        with open(request + " ebay", mode="w", encoding="utf-8") as file:
+        with open(request, mode="w", encoding="utf-8") as file:
             for object in sorted(data, key=lambda x: x["price"]):
                 line = ""
                 for i in object.values():
                     line += f"{i}, "
                 line+="\n"
                 file.write(line)
-        
-
-main("rtx 3060")

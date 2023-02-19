@@ -2,8 +2,7 @@ from bs4 import BeautifulSoup as BS
 
 import requests
 
-from config import URL, CPUS
-
+URL = "https://aliexpress.ru"
 
 def get_response(request: str):
     request_text = "+".join(request.lower().strip().split(" "))
@@ -71,6 +70,3 @@ def main(request):
             for link, object_data in data.items():
                 line = f"{object_data['name']}: {link}, {object_data} \n"
                 file.write(line)
-
-
-main("rtx 3060")
